@@ -1,11 +1,11 @@
 ﻿namespace Core
 {
-    public abstract class ViewData : IViewData
+    public abstract class ViewData
     {
 
     }
 
-    public abstract class Model : IBindable, IModelable
+    public abstract class Model : IModelable
     {
         public ViewData viewData;
     }

@@ -2,16 +2,14 @@
 
 namespace MVP.Content
 {
-    internal class ItemPresenter : Presenter
+    internal class ItemPresenter : Presenter<ItemModel, ItemViewer>
     {
-        protected ItemModel? model;
-        protected ItemViewer? viewer;
-        public override void Bind(IModelable modelable)
+        public override void Bind(ItemModel modelable)
         {
             if (modelable is ItemModel model)
                 this.model = model;
         }
-        public override void Inject(IDependencible dependencible)
+        public override void Inject(ItemViewer dependencible)
         {
             if (dependencible is ItemViewer viewer)
                 this.viewer = viewer;

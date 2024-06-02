@@ -1,9 +1,15 @@
-﻿namespace Core
+﻿using MVP.Content;
+
+namespace Core
 {
-    public abstract class Presenter : IPresentable, IInjectable
+    public abstract class Presenter<Model,Viewer> : IPresentable
+        where Model : IModelable
+        where Viewer : IViewable
     {
-        public abstract void Bind(IModelable modelable);
-        public abstract void Inject(IDependencible dependencible);
+        protected Model? model;
+        protected Viewer? viewer;
+        public abstract void Bind(Model modelable);
+        public abstract void Inject(Viewer viewable);
         public abstract void View();
     }
 }
