@@ -22,12 +22,12 @@
     {
 
     }
-    public interface  IModelable
+    public interface IModelable
     {
-        
+
     }
     public interface IViewData
     {
-        //public void Print();
+
     }
 }
