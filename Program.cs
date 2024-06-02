@@ -12,7 +12,7 @@ internal class Program
         presenter.Bind(model);
 
         ItemViewer viewer = new ItemViewer();
-        presenter.Inject(viewer);
+        presenter.Regist(viewer);
 
 
         presenter.View();

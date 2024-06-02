@@ -4,27 +4,32 @@ namespace MVP.Content
 {
     internal class ItemPresenter : Presenter<ItemModel, ItemViewer>
     {
-        public override void Bind(ItemModel modelable)
+        public override void Bind(ItemModel model)
         {
-            if (modelable is ItemModel model)
-                this.model = model;
+            this.model = model;
         }
-        public override void Inject(ItemViewer dependencible)
+        public override void Regist(ItemViewer viewer)
         {
-            if (dependencible is ItemViewer viewer)
-                this.viewer = viewer;
+            viewers.Add(viewer);
+        }
+        public override void Unregist(ItemViewer viewer)
+        {
+            viewers.Remove(viewer);
         }
         public override void View()
         {
-            viewer?.View(model);
+            foreach(var viewer in viewers)
+                viewer.View(model);
         }
         public void Increase(int amount)
         {
-            viewer?.View(model.Increase(amount));
+            model.Increase(amount);
+            View();
         }
         public void Decrease(int amount)
         {
-            viewer?.View(model.Decrease(amount));
+            model.Decrease(amount);
+            View();
         }
     }
 }
